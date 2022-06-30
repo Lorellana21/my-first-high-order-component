@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
 
-function App() {
+
+/*componente simple que retorna un parrafo*/
+const someText = () => <p>Hi</p>;
+
+/*HOC que acepta un componente 
+y luego retorna un span con cierto estilo*/
+//Normalmente siempre comienzan con with
+const withRedColor = (Component) => () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <span
+      style={{
+        color: "red"
+      }}
+    >
+      <Component />
+    </span>
   );
-}
+};
 
-export default App;
+export default withRedColor(someText);
